@@ -1,0 +1,168 @@
+{
+  "time1": {
+    "nome": "VASCO",
+    "finalizacoes": [
+      "Paulo Alves",
+      "L Freitas",
+      "N Moreira",
+      "L Augusto",
+      "R vitor",
+      "B Garre"
+    ],
+    "contagemFinalizacoes": [
+      1,
+      1,
+      2,
+      1,
+      2,
+      1
+    ],
+    "chutesAoGol": [
+      "L Augusto",
+      "R Vitor",
+      "N Moreira",
+      "J Vitor"
+    ],
+    "contagemChutesAoGol": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "assistencias": [],
+    "gols": [],
+    "faltas": [
+      "Paulo Alves",
+      "L Freiras",
+      "B Garre",
+      "J Vitor",
+      "Lucas piton",
+      "L Gustavo",
+      "M Carvalho"
+    ],
+    "contagemFaltas": [
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1
+    ],
+    "desarmes": [
+      "Hugo Moura",
+      "Lucas Piton",
+      "Paulo Alves",
+      "Hugo Moura",
+      "J Vitor"
+    ],
+    "contagemDesarmes": [
+      5,
+      1,
+      1,
+      1,
+      3
+    ],
+    "cartoes": [
+      {
+        "jogador": "L Gustavo",
+        "minuto": 51,
+        "tipo": "Amarelo"
+      },
+      {
+        "jogador": "Paulo Alves",
+        "minuto": 58,
+        "tipo": "Vermelho"
+      }
+    ],
+    "impedimentos": [
+      1
+    ],
+    "escanteios": {
+      "primeiroTempo": 2,
+      "segundoTempo": 5
+    }
+  },
+  "time2": {
+    "nome": "PALMEIRAS",
+    "finalizacoes": [
+      "Felipe Anderson",
+      "Richard Rios",
+      "Bruno Fuchs",
+      "Estevão",
+      "Piquerez",
+      "Gustavo Gomez",
+      "Piquerez",
+      "Flaco Lopez",
+      "Vitor Roque",
+      "P Sampaio",
+      "A Andrade",
+      "J Lopez",
+      "Emiliano Martinez"
+    ],
+    "contagemFinalizacoes": [
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "chutesAoGol": [
+      "Emiliano Martinez",
+      "Vitor Roque"
+    ],
+    "contagemChutesAoGol": [
+      1,
+      1
+    ],
+    "assistencias": [
+      {
+        "jogador": "Estevão",
+        "minuto": "Vitor Roque - 60"
+      }
+    ],
+    "gols": [
+      {
+        "jogador": "Vitor Roque",
+        "minuto": 60
+      }
+    ],
+    "faltas": [
+      "Emiliano Martinez",
+      "Gustavo Gomez",
+      "Felipe Anderson"
+    ],
+    "contagemFaltas": [
+      1,
+      1,
+      2
+    ],
+    "desarmes": [
+      "Bruno Fuchs",
+      "Gustavo Gomez",
+      "Emiliano Martinez",
+      "V"
+    ],
+    "contagemDesarmes": [
+      2,
+      1,
+      1
+    ],
+    "cartoes": [],
+    "impedimentos": [
+      1
+    ],
+    "escanteios": {
+      "primeiroTempo": 6,
+      "segundoTempo": 5
+    }
+  }
+}

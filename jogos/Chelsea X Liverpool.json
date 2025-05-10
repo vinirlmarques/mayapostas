@@ -1,0 +1,196 @@
+{
+  "time1": {
+    "nome": "CHELSEA",
+    "finalizacoes": [
+      "Enzo Fernandez ",
+      "Madueke",
+      "Pedro Neto",
+      "C Palmer",
+      "Jackson",
+      "Sancho"
+    ],
+    "contagemFinalizacoes": [
+      2,
+      4,
+      3,
+      4,
+      1,
+      1
+    ],
+    "chutesAoGol": [
+      "Enzo Fernandez ",
+      "Manduek",
+      "Jackson",
+      "C Palmer",
+      "Sancho"
+    ],
+    "contagemChutesAoGol": [
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "assistencias": [
+      {
+        "jogador": "Pedro Neto",
+        "minuto": "Enzo Fernandez - 3"
+      }
+    ],
+    "gols": [
+      {
+        "jogador": "Enzo Fernandez",
+        "minuto": 3
+      }
+    ],
+    "faltas": [
+      "Chalobah",
+      "Caicedo",
+      "Jackson",
+      "Enzo Fernandez",
+      "Cucurella",
+      "C Palmer",
+      "Lavia"
+    ],
+    "contagemFaltas": [
+      2,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1
+    ],
+    "desarmes": [
+      "Colwill",
+      "C Palmer",
+      "Enzo Fernandez",
+      "Pedro Neto ",
+      "Jackson",
+      "Caicedo",
+      "Lavia",
+      "Chalibah"
+    ],
+    "contagemDesarmes": [
+      2,
+      2,
+      2,
+      1,
+      2,
+      2,
+      2,
+      3
+    ],
+    "cartoes": [
+      {
+        "jogador": "Chalobah",
+        "minuto": 54,
+        "tipo": "Amarelo"
+      },
+      {
+        "jogador": "Sancho",
+        "minuto": 84,
+        "tipo": "Amarelo"
+      }
+    ],
+    "impedimentos": [
+      6
+    ],
+    "escanteios": {
+      "primeiroTempo": 2,
+      "segundoTempo": 1
+    }
+  },
+  "time2": {
+    "nome": "LIVERPOOL",
+    "finalizacoes": [
+      "D Jota",
+      "Gakpo",
+      "A Arnold",
+      "Van Djik",
+      "Elliot",
+      "Darwin",
+      "Salah"
+    ],
+    "contagemFinalizacoes": [
+      2,
+      1,
+      1,
+      2,
+      2,
+      1,
+      1
+    ],
+    "chutesAoGol": [
+      "Gakpo",
+      "Van Djik"
+    ],
+    "contagemChutesAoGol": [
+      1,
+      1
+    ],
+    "assistencias": [
+      {
+        "jogador": "Mac Allister",
+        "minuto": "Van Djik - 85"
+      }
+    ],
+    "gols": [
+      {
+        "jogador": "Van Djik",
+        "minuto": 85
+      }
+    ],
+    "faltas": [
+      "D Jotaa",
+      "Jones",
+      "Quansah",
+      "Jones",
+      "Van Djik"
+    ],
+    "contagemFaltas": [
+      4,
+      1,
+      1,
+      1,
+      1
+    ],
+    "desarmes": [
+      "Endo",
+      "Tsimikas",
+      "Quansah",
+      "Jones",
+      "Darwin",
+      "Quansah",
+      "Mac Allister"
+    ],
+    "contagemDesarmes": [
+      3,
+      2,
+      1,
+      2,
+      1,
+      1,
+      1
+    ],
+    "cartoes": [
+      {
+        "jogador": "Van Djik",
+        "minuto": 51,
+        "tipo": "Amarelo"
+      },
+      {
+        "jogador": "Quansah",
+        "minuto": 59,
+        "tipo": "Amarelo"
+      }
+    ],
+    "impedimentos": [
+      0
+    ],
+    "escanteios": {
+      "primeiroTempo": 1,
+      "segundoTempo": 5
+    }
+  }
+}

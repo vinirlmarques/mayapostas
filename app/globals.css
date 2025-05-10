@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@import "tailwindcss/utilities";
+
+@font-face {
+  font-family: "Decaydence";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Decaydence"), url("/fonts/Decaydence.woff") format("woff");
+}
+
+:root {
+  --background: #e8e8e8;
+  --background-two: #f5f5f5;
+  --background-three: #ffffff;
+
+  --text: #181818;
+  --text-two: #222222;
+  --text-three: #2e2e2e;
+  --text-header: #e8e8e8;
+
+  --gray-one: #dcdcdc;
+  --gray-two: #c2c2c2;
+  --gray-three: #808080;
+
+  --primary-color: #a2ff00;
+}
+
+.dark {
+  --background: #181818;
+  --background-two: #121212;
+  --background-three: #0a0a0a;
+
+  --text: #bcbcbc;
+  --text-two: #2c2c2c;
+  --text-three: #e8e8e8;
+  --text-header: #e8e8e8;
+
+  --gray-one: #202020;
+  --gray-two: #363636;
+  --gray-three: #808080;
+
+  --primary-color: #a2ff00;
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--text);
+}
