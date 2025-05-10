@@ -15,7 +15,7 @@ export default function HomeTop() {
   };
 
   return (
-    <div className="bg-[var(--background)] mt-24 w-full flex justify-start items-center flex-col">
+    <div className="bg-[#181818] mt-24 w-full flex justify-start items-center flex-col">
 
       <div className="flex justify-center items-center flex-row">
         <Image
