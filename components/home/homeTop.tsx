@@ -27,7 +27,7 @@ export default function HomeTop() {
         />
       </div>
 
-      <h2 className="text-[var(--text)] text-xl mt-4 transition-colors duration-300">
+      <h2 className="text-[#bcbcbc] text-xl mt-4 transition-colors duration-300">
         May Que Que Isso apostas!
       </h2>
     </div>

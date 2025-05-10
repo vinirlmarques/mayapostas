@@ -12,12 +12,6 @@ export default function Cabecalho() {
         <MenuItem title="Meus jogos" href="/home" />
         <MenuItem title="Futúros módulos" href="/upload" />
       </div>
-      <button
-        onClick={toggleTheme}
-        className="bg-transparent flex justify-center items-center text-[var(--background)] transition-transform hover:scale-110 mr-8 mb-1"
-      >
-        {theme === 'light' ? <DarkMode /> : <LightMode />}
-      </button>
     </div>
   );
 }
