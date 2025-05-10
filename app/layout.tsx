@@ -19,7 +19,7 @@ export default function RootLayout() {
       </head>
       <body>
         <ThemeProvider>
-          <Cabecalho />
+          <Cabecalho></Cabecalho>
           <Home></Home>
         </ThemeProvider>
       </body>

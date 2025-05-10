@@ -63,26 +63,28 @@ export default function RegistrarPlanilha() {
 
         setJogosFiltrados(Object.fromEntries(jogosFiltrados));
     };
-    const salvarJsonNoServidor = async (nomeArquivo: string, dados: DadosPlanilha) => {
-        try {
-            const resposta = await fetch('/api/salvarJson', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ nomeArquivo, dados }),
-            });
 
-            if (resposta.ok) {
-                const resultado = await resposta.json();
-                setAlerta({ mensagem: resultado.mensagem || 'Arquivo salvo com sucesso!', tipo: 'success' });
-            } else {
-                const erro = await resposta.json();
-                setAlerta({ mensagem: erro.mensagem || 'Erro ao salvar o arquivo.', tipo: 'error' });
-            }
-        } catch (error) {
-            console.error(error);
-            setAlerta({ mensagem: 'Erro ao conectar com o servidor.', tipo: 'error' });
+    const salvarJsonNoServidor = async (nomeArquivo: string, dados: DadosPlanilha) => {
+    try {
+        const resposta = await fetch('/api/salvarJson', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nomeArquivo, dados }),
+        });
+
+        if (resposta.ok) {
+            const resultado = await resposta.json();
+            setAlerta({ mensagem: resultado.mensagem || 'Arquivo salvo com sucesso no Firestore!', tipo: 'success' });
+        } else {
+            const erro = await resposta.json();
+            setAlerta({ mensagem: erro.mensagem || 'Erro ao salvar o arquivo no Firestore.', tipo: 'error' });
         }
+    } catch (error) {
+        console.error(error);
+        setAlerta({ mensagem: 'Erro ao conectar com o servidor.', tipo: 'error' });
+    }
     };
+
 
 
     useEffect(() => {
@@ -92,7 +94,7 @@ export default function RegistrarPlanilha() {
                 if (resposta.ok) {
                     const jogos = await resposta.json();
                     console.log(jogos);
-                    setDadosJson(jogos); // Agora os nomes dos arquivos serão as chaves
+                    setDadosJson(jogos);
                 } else {
                     console.error('Erro ao carregar os jogos.');
                 }
@@ -103,6 +105,7 @@ export default function RegistrarPlanilha() {
 
         carregarJogos();
     }, []);
+
 
     const manipularUploadArquivo = (event: React.ChangeEvent<HTMLInputElement>) => {
         const arquivo = event.target.files ? event.target.files[0] : null;
@@ -259,7 +262,10 @@ export default function RegistrarPlanilha() {
             {(jogosFiltrados || dadosJson) && (
                 <div className="mt-6">
                     {Object.entries(jogosFiltrados || dadosJson || {}).map(([nomePlanilha, dadosAba]) => {
-                        // Extrai a data do nome do arquivo (assumindo que está no formato "DDMM" no final)
+                        if (!dadosAba || !dadosAba.time1 || !dadosAba.time2) {
+                            console.error(`Dados do jogo ${nomePlanilha} estão inválidos:`, dadosAba);
+                            return null;
+                        }
                         const match = nomePlanilha.match(/(\d{2})(\d{2})$/);
                         let dataFormatada = '';
                         if (match) {

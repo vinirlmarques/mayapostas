@@ -2,6 +2,7 @@
 import MenuItem from './MenuItem';
 import { LightMode, DarkMode } from '@mui/icons-material';
 import { useTheme } from '@/context/ThemeContext';
+
 export default function Cabecalho() {
   const { theme, toggleTheme } = useTheme();
 
@@ -13,8 +14,9 @@ export default function Cabecalho() {
       </div>
       <button
         onClick={toggleTheme}
-        className="bg-transparent **:flex justify-center items-center text[var(--background)] transition-transform hover:scale-110 mr-8 mb-1"
+        className="bg-transparent flex justify-center items-center text-[var(--background)] transition-transform hover:scale-110 mr-8 mb-1"
       >
+        {theme === 'light' ? <DarkMode /> : <LightMode />}
       </button>
     </div>
   );
