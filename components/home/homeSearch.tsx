@@ -331,18 +331,20 @@ export default function RegistrarPlanilha() {
 
                         return (
                             <div key={nomePlanilha} className="mb-6">
-                                <h2 className="text-xl font-semibold mb-4">
+                                <div className="flex justify-start items-start flex-row">
+                                    <h2 className="text-xl font-semibold mb-4">
                                     {dadosAba.time1.nome} X {dadosAba.time2.nome}
                                     <span className="text-gray-500 text-sm"> {dadosAba.time1.dia}</span>
                                 </h2>
 
-                                <IconButton
-                                onClick={() => abrirDialogo(nomePlanilha)}
-                                color="error"
-                                aria-label="Apagar jogo"
-                            >
-                                <DeleteIcon />
-                            </IconButton>
+                                    <IconButton
+                                    onClick={() => abrirDialogo(nomePlanilha)}
+                                    color="error"
+                                    aria-label="Apagar jogo"
+                                >
+                                    <DeleteIcon />
+                                 </IconButton>
+                                </div>
 
                                 {/* Layout Flexbox para organizar as abas e as informações dos times lado a lado */}
                                 <div className="flex space-x-10">
