@@ -4,6 +4,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import * as XLSX from 'xlsx';
 import { Snackbar, Alert, Tabs, Tab, IconButton, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete'; // Importa o ícone de exclusão
+import SportsSoccerIcon from '@mui/icons-material/SportsSoccer'; // Ícone para gols
+import SportsIcon from '@mui/icons-material/Sports'; // Ícone para finalizações
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents'; // Ícone para assistências
+import ShieldIcon from '@mui/icons-material/Shield'; // Ícone para desarmes
+import WarningIcon from '@mui/icons-material/Warning'; // Ícone para faltas
+import CardMembershipIcon from '@mui/icons-material/CardMembership'; // Ícone para cartões
+import BlockIcon from '@mui/icons-material/Block'; // Ícone para impedimentos
+import FlagIcon from '@mui/icons-material/Flag'; 
 
 
 
@@ -32,7 +40,7 @@ interface DadosTime {
     desarmes: string[];
     contagemDesarmes: number[];
     cartoes: Cartao[];
-    impedimentos: number[];
+    impedimentos: number;
     escanteios: { primeiroTempo: number; segundoTempo: number };
 }
 
@@ -236,7 +244,7 @@ export default function RegistrarPlanilha() {
                                     return null;
                                 })
                                 .filter(cartao => cartao !== null) as Cartao[],
-                            impedimentos: [aba[1]?.[colunaInicio + 12] || 0],
+                            impedimentos: aba[1]?.[colunaInicio + 12] || 0,
                             escanteios: { 
                                 primeiroTempo: aba[1]?.[colunaInicio + 14] || 0, 
                                 segundoTempo: aba[2]?.[colunaInicio + 14] || 0 
@@ -350,92 +358,123 @@ export default function RegistrarPlanilha() {
                                 <div className="flex space-x-10">
                                     {/* Controle de abas e informações do Time 1 */}
                                     <div className="w-1/2">
-                                        <Tabs 
-                                            value={abaSelecionadaTime1} 
-                                            onChange={handleChangeTabTime1} 
-                                            indicatorColor="primary" 
-                                            orientation='horizontal'
-                                        >
-                                            <Tab 
-                                                label="Finalizações" 
-                                                sx={{
-                                                    color: 'white', // Cor da letra branca
-                                                    fontWeight: 'bold', 
-                                                    flexShrink: 0,  // Impede que a aba encolha
-                                                    '&.Mui-selected': {
-                                                        color: 'white',  // Mantém a cor branca quando a aba estiver selecionada
-                                                    },
-                                                }} 
-                                            />
-                                            <Tab 
-                                                label="Chutes ao Gol" 
-                                                sx={{
-                                                    color: 'white',
-                                                    fontWeight: 'bold',
-                                                    flexShrink: 0,
-                                                    '&.Mui-selected': {
+                                        <Tabs
+                                                value={abaSelecionadaTime1}
+                                                onChange={handleChangeTabTime1}
+                                                indicatorColor="primary"
+                                                variant="scrollable"
+                                                scrollButtons="auto"
+                                                orientation="horizontal"
+                                            >
+                                                <Tab
+                                                    icon={<SportsIcon />}
+                                                    title="Finalizações"
+                                                    sx={{
                                                         color: 'white',
-                                                    },
-                                                }} 
-                                            />
-                                            <Tab 
-                                                label="Gols" 
-                                                sx={{
-                                                    color: 'white',
-                                                    fontWeight: 'bold',
-                                                    flexShrink: 0,
-                                                    '&.Mui-selected': {
+                                                        fontWeight: 'bold',
+                                                        flexShrink: 0,
+                                                        '&.Mui-selected': {
+                                                            color: 'white',
+                                                        },
+                                                    }}
+                                                />
+                                                <Tab
+                                                    icon={<SportsSoccerIcon />}
+                                                    title="Chutes ao Gol"
+                                                    sx={{
                                                         color: 'white',
-                                                    },
-                                                }} 
-                                            />
-                                            <Tab 
-                                                label="Assistências" 
-                                                sx={{
-                                                    color: 'white',
-                                                    fontWeight: 'bold',
-                                                    flexShrink: 0,
-                                                    '&.Mui-selected': {
+                                                        fontWeight: 'bold',
+                                                        flexShrink: 0,
+                                                        '&.Mui-selected': {
+                                                            color: 'white',
+                                                        },
+                                                    }}
+                                                />
+                                                <Tab
+                                                    icon={<EmojiEventsIcon />}
+                                                    title="Gols"
+                                                    sx={{
                                                         color: 'white',
-                                                    },
-                                                }} 
-                                            />
-                                            <Tab 
-                                                label="Desarmes" 
-                                                sx={{
-                                                    color: 'white',
-                                                    fontWeight: 'bold',
-                                                    flexShrink: 0,
-                                                    '&.Mui-selected': {
+                                                        fontWeight: 'bold',
+                                                        flexShrink: 0,
+                                                        '&.Mui-selected': {
+                                                            color: 'white',
+                                                        },
+                                                    }}
+                                                />
+                                                <Tab
+                                                    icon={<EmojiEventsIcon />}
+                                                    title="Assistências"
+                                                    sx={{
                                                         color: 'white',
-                                                    },
-                                                }} 
-                                            />
-                                            <Tab 
-                                                label="Faltas" 
-                                                sx={{
-                                                    color: 'white',
-                                                    fontWeight: 'bold',
-                                                    flexShrink: 0,
-                                                    '&.Mui-selected': {
+                                                        fontWeight: 'bold',
+                                                        flexShrink: 0,
+                                                        '&.Mui-selected': {
+                                                            color: 'white',
+                                                        },
+                                                    }}
+                                                />
+                                                <Tab
+                                                    icon={<ShieldIcon />}
+                                                    title="Desarmes"
+                                                    sx={{
                                                         color: 'white',
-                                                    },
-                                                }} 
-                                            />
-                                            <Tab 
-                                                label="Cartões" 
-                                                sx={{
-                                                    color: 'white',
-                                                    fontWeight: 'bold',
-                                                    flexShrink: 0,
-                                                    '&.Mui-selected': {
+                                                        fontWeight: 'bold',
+                                                        flexShrink: 0,
+                                                        '&.Mui-selected': {
+                                                            color: 'white',
+                                                        },
+                                                    }}
+                                                />
+                                                <Tab
+                                                    icon={<WarningIcon />}
+                                                    title="Faltas"
+                                                    sx={{
                                                         color: 'white',
-                                                    },
-                                                }} 
-                                            />
-                                        </Tabs>
-
-
+                                                        fontWeight: 'bold',
+                                                        flexShrink: 0,
+                                                        '&.Mui-selected': {
+                                                            color: 'white',
+                                                        },
+                                                    }}
+                                                />
+                                                <Tab
+                                                    icon={<CardMembershipIcon />}
+                                                    title="Cartões"
+                                                    sx={{
+                                                        color: 'white',
+                                                        fontWeight: 'bold',
+                                                        flexShrink: 0,
+                                                        '&.Mui-selected': {
+                                                            color: 'white',
+                                                        },
+                                                    }}
+                                                />
+                                                <Tab
+                                                    icon={<BlockIcon />}
+                                                    title="Impedimentos"
+                                                    sx={{
+                                                        color: 'white',
+                                                        fontWeight: 'bold',
+                                                        flexShrink: 0,
+                                                        '&.Mui-selected': {
+                                                            color: 'white',
+                                                        },
+                                                    }}
+                                                />
+                                                <Tab
+                                                    icon={<FlagIcon />}
+                                                    title="Escanteios"
+                                                    sx={{
+                                                        color: 'white',
+                                                        fontWeight: 'bold',
+                                                        flexShrink: 0,
+                                                        '&.Mui-selected': {
+                                                            color: 'white',
+                                                        },
+                                                    }}
+                                                />
+                                            </Tabs>
                                         {/* Conteúdo das abas para o Time 1 */}
                                         <div className="mt-4 h-[280px] overflow-y-auto">
                                             {abaSelecionadaTime1 === 0 && (
@@ -543,95 +582,148 @@ export default function RegistrarPlanilha() {
                                                     )}
                                                 </div>
                                             )}
+                                            {abaSelecionadaTime1 === 7 && (
+                                                <div className="p-4 border rounded shadow h-[280px] overflow-y-auto">
+                                                    <strong className="text-green-400">Impedimentos:</strong>
+                                                    {dadosAba.time1.impedimentos > 0 ? (
+                                                        <div>{dadosAba.time1.impedimentos} impedimentos</div>
+                                                    ) : (
+                                                        <div>Sem impedimentos</div>
+                                                    )}
+                                                </div>
+                                            )}
+
+                                            {abaSelecionadaTime1 === 8 && (
+                                                <div className="p-4 border rounded shadow h-[280px] overflow-y-auto">
+                                                    <strong className="text-green-400">Escanteios:</strong>
+                                                    <div>
+                                                        <div>Primeiro Tempo: {dadosAba.time1.escanteios.primeiroTempo}</div>
+                                                        <div>Segundo Tempo: {dadosAba.time1.escanteios.segundoTempo}</div>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
 
                                     {/* Controle de abas e informações do Time 2 */}
-                                                <div className="w-1/2">
-                                                    <Tabs 
-                                                        value={abaSelecionadaTime2} 
-                                                        onChange={handleChangeTabTime2} 
-                                                        indicatorColor="primary" 
-                                                        orientation='horizontal'
-                                                    >
-                                                        <Tab 
-                                                            label="Finalizações" 
-                                                            sx={{
-                                                                color: 'white', // Cor da letra branca
-                                                                fontWeight: 'bold', 
-                                                                flexShrink: 0,  // Impede que a aba encolha
-                                                                '&.Mui-selected': {
-                                                                    color: 'white',  // Mantém a cor branca quando a aba estiver selecionada
-                                                                },
-                                                            }} 
-                                                        />
-                                                        <Tab 
-                                                            label="Chutes ao Gol" 
-                                                            sx={{
-                                                                color: 'white',
-                                                                fontWeight: 'bold',
-                                                                flexShrink: 0,
-                                                                '&.Mui-selected': {
-                                                                    color: 'white',
-                                                                },
-                                                            }} 
-                                                        />
-                                                        <Tab 
-                                                            label="Gols" 
-                                                            sx={{
-                                                                color: 'white',
-                                                                fontWeight: 'bold',
-                                                                flexShrink: 0,
-                                                                '&.Mui-selected': {
-                                                                    color: 'white',
-                                                                },
-                                                            }} 
-                                                        />
-                                                        <Tab 
-                                                            label="Assistências" 
-                                                            sx={{
-                                                                color: 'white',
-                                                                fontWeight: 'bold',
-                                                                flexShrink: 0,
-                                                                '&.Mui-selected': {
-                                                                    color: 'white',
-                                                                },
-                                                            }} 
-                                                        />
-                                                        <Tab 
-                                                            label="Desarmes" 
-                                                            sx={{
-                                                                color: 'white',
-                                                                fontWeight: 'bold',
-                                                                flexShrink: 0,
-                                                                '&.Mui-selected': {
-                                                                    color: 'white',
-                                                                },
-                                                            }} 
-                                                        />
-                                                        <Tab 
-                                                            label="Faltas" 
-                                                            sx={{
-                                                                color: 'white',
-                                                                fontWeight: 'bold',
-                                                                flexShrink: 0,
-                                                                '&.Mui-selected': {
-                                                                    color: 'white',
-                                                                },
-                                                            }} 
-                                                        />
-                                                        <Tab 
-                                                            label="Cartões" 
-                                                            sx={{
-                                                                color: 'white',
-                                                                fontWeight: 'bold',
-                                                                flexShrink: 0,
-                                                                '&.Mui-selected': {
-                                                                    color: 'white',
-                                                                },
-                                                            }} 
-                                                        />
-                                                    </Tabs>
+                                    <div className="w-1/2">
+    <Tabs
+        value={abaSelecionadaTime2}
+        onChange={handleChangeTabTime2}
+        indicatorColor="primary"
+        variant="scrollable"
+        scrollButtons="auto"
+        orientation="horizontal"
+    >
+        <Tab
+            icon={<SportsIcon />}
+            title="Finalizações"
+            sx={{
+                color: 'white',
+                fontWeight: 'bold',
+                flexShrink: 0,
+                '&.Mui-selected': {
+                    color: 'white',
+                },
+            }}
+        />
+        <Tab
+            icon={<SportsSoccerIcon />}
+            title="Chutes ao Gol"
+            sx={{
+                color: 'white',
+                fontWeight: 'bold',
+                flexShrink: 0,
+                '&.Mui-selected': {
+                    color: 'white',
+                },
+            }}
+        />
+        <Tab
+            icon={<EmojiEventsIcon />}
+            title="Gols"
+            sx={{
+                color: 'white',
+                fontWeight: 'bold',
+                flexShrink: 0,
+                '&.Mui-selected': {
+                    color: 'white',
+                },
+            }}
+        />
+        <Tab
+            icon={<EmojiEventsIcon />}
+            title="Assistências"
+            sx={{
+                color: 'white',
+                fontWeight: 'bold',
+                flexShrink: 0,
+                '&.Mui-selected': {
+                    color: 'white',
+                },
+            }}
+        />
+        <Tab
+            icon={<ShieldIcon />}
+            title="Desarmes"
+            sx={{
+                color: 'white',
+                fontWeight: 'bold',
+                flexShrink: 0,
+                '&.Mui-selected': {
+                    color: 'white',
+                },
+            }}
+        />
+        <Tab
+            icon={<WarningIcon />}
+            title="Faltas"
+            sx={{
+                color: 'white',
+                fontWeight: 'bold',
+                flexShrink: 0,
+                '&.Mui-selected': {
+                    color: 'white',
+                },
+            }}
+        />
+        <Tab
+            icon={<CardMembershipIcon />}
+            title="Cartões"
+            sx={{
+                color: 'white',
+                fontWeight: 'bold',
+                flexShrink: 0,
+                '&.Mui-selected': {
+                    color: 'white',
+                },
+            }}
+        />
+        <Tab
+            icon={<BlockIcon />}
+            title="Impedimentos"
+            sx={{
+                color: 'white',
+                fontWeight: 'bold',
+                flexShrink: 0,
+                '&.Mui-selected': {
+                    color: 'white',
+                },
+            }}
+        />
+        <Tab
+            icon={<FlagIcon />}
+            title="Escanteios"
+            sx={{
+                color: 'white',
+                fontWeight: 'bold',
+                flexShrink: 0,
+                '&.Mui-selected': {
+                    color: 'white',
+                },
+            }}
+        />
+    </Tabs>
 
                                         {/* Conteúdo das abas para o Time 2 */}
                                         <div className="mt-4 h-[280px] overflow-y-auto">
@@ -738,6 +830,26 @@ export default function RegistrarPlanilha() {
                                                     ) : (
                                                         <div>Sem cartões</div>
                                                     )}
+                                                </div>
+                                            )}
+                                            {abaSelecionadaTime2 === 7 && (
+                                                <div className="p-4 border rounded shadow h-[280px] overflow-y-auto">
+                                                    <strong className="text-green-400">Impedimentos:</strong>
+                                                    {dadosAba.time2.impedimentos > 0 ? (
+                                                        <div>{dadosAba.time2.impedimentos} impedimentos</div>
+                                                    ) : (
+                                                        <div>Sem impedimentos</div>
+                                                    )}
+                                                </div>
+                                            )}
+
+                                            {abaSelecionadaTime2 === 8 && (
+                                                <div className="p-4 border rounded shadow h-[280px] overflow-y-auto">
+                                                    <strong className="text-green-400">Escanteios:</strong>
+                                                    <div>
+                                                        <div>Primeiro Tempo: {dadosAba.time2.escanteios.primeiroTempo}</div>
+                                                        <div>Segundo Tempo: {dadosAba.time2.escanteios.segundoTempo}</div>
+                                                    </div>
                                                 </div>
                                             )}
                                         </div>
