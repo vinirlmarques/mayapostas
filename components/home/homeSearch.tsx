@@ -47,6 +47,7 @@ interface DadosTime {
 interface DadosPlanilha {
     time1: DadosTime;
     time2: DadosTime;
+    placar?: string;
 }
 
 export default function RegistrarPlanilha() {
@@ -104,7 +105,8 @@ export default function RegistrarPlanilha() {
                 const resposta = await fetch('/api/listarJogos');
                 if (resposta.ok) {
                     const jogos = await resposta.json();
-                    setDadosJson(jogos);
+                    await setDadosJson(jogos);
+                    
                 } else {
                     console.error('Erro ao carregar os jogos.');
                 }
@@ -252,9 +254,15 @@ export default function RegistrarPlanilha() {
                         };
                     };
 
+                    const time1 = parsearDadosTime(0);
+                    const time2 = parsearDadosTime(15);
+                    const somaGolsTime1 = time1.gols.length;
+                    const somaGolsTime2 = time2.gols.length;
+
                     const dadosAba: DadosPlanilha = {
-                        time1: parsearDadosTime(0),
-                        time2: parsearDadosTime(15),
+                        time1,
+                        time2,
+                        placar: `${somaGolsTime1} X ${somaGolsTime2}`
                     };
 
                     dadosParseados[nomePlanilha] = dadosAba;
@@ -341,7 +349,7 @@ export default function RegistrarPlanilha() {
                             <div key={nomePlanilha} className="mb-6">
                                 <div className="flex justify-start items-start flex-row">
                                     <h2 className="text-xl font-semibold mb-4">
-                                    {dadosAba.time1.nome} X {dadosAba.time2.nome}
+                                    {dadosAba.time1.nome} X {dadosAba.time2.nome} ({dadosAba.placar})
                                     <span className="text-gray-500 text-sm"> {dadosAba.time1.dia}</span>
                                 </h2>
 
