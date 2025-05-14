@@ -48,6 +48,7 @@ interface DadosPlanilha {
     time1: DadosTime;
     time2: DadosTime;
     placar?: string;
+    id?: string;
 }
 
 export default function RegistrarPlanilha() {
@@ -121,6 +122,7 @@ export default function RegistrarPlanilha() {
 
      const apagarJogo = async (id: string) => {
         try {
+            console.log('Apagando jogo com ID:', id);
             const resposta = await fetch(`/api/apagarJogo?id=${id}`, {
                 method: 'DELETE',
             });
@@ -136,6 +138,8 @@ export default function RegistrarPlanilha() {
         } catch (error) {
             console.error(error);
             setAlerta({ mensagem: 'Erro ao conectar com o servidor.', tipo: 'error' });
+        } finally {
+            carregarJogos();
         }
     };
 
@@ -346,20 +350,20 @@ export default function RegistrarPlanilha() {
                         }
 
                         return (
-                            <div key={nomePlanilha} className="mb-6">
+                            <div key={dadosAba.id || nomePlanilha} className="mb-6">
                                 <div className="flex justify-start items-start flex-row">
                                     <h2 className="text-xl font-semibold mb-4">
                                     {dadosAba.time1.nome} X {dadosAba.time2.nome} ({dadosAba.placar})
                                     <span className="text-gray-500 text-sm"> {dadosAba.time1.dia}</span>
                                 </h2>
 
-                                    <IconButton
-                                    onClick={() => abrirDialogo(nomePlanilha)}
+                                <IconButton
+                                    onClick={() => dadosAba.id && apagarJogo(dadosAba.id)} // Verifica se `dadosAba.id` não é undefined
                                     color="error"
                                     aria-label="Apagar jogo"
                                 >
                                     <DeleteIcon />
-                                 </IconButton>
+                                </IconButton>
                                 </div>
 
                                 {/* Layout Flexbox para organizar as abas e as informações dos times lado a lado */}

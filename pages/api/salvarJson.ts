@@ -1,5 +1,5 @@
 import { db } from "@/firebaseConfig"; 
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -12,9 +12,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
       const colecaoRef = collection(db, "jogos"); // Referência à coleção "jogos"
-      await addDoc(colecaoRef, { nomeArquivo, ...dados }); // Salva com um ID aleatório
+      const docRef = await addDoc(colecaoRef, { nomeArquivo, ...dados }); // Salva com um ID aleatório
 
-      res.status(200).json({ mensagem: "Arquivo salvo com sucesso no Firestore!" });
+      // Atualizar o documento com o ID gerado
+      await updateDoc(doc(colecaoRef, docRef.id), { id: docRef.id });
+
+      res.status(200).json({ mensagem: "Arquivo salvo com sucesso no Firestore!", id: docRef.id });
     } catch (error) {
       console.error(error);
       res.status(500).json({ mensagem: "Erro ao salvar o arquivo." });
